@@ -1,0 +1,31 @@
+const nameList = document.getElementById('name-list');
+const nameItems = document.querySelectorAll('.name');
+const submitButton = document.getElementById('submit-button');
+
+// Move a name to the bottom of the list when clicked
+nameList.addEventListener('click', (event) => {
+  if (event.target.tagName === 'LI') {
+    nameList.appendChild(event.target);
+  }
+});
+
+// Exclude names on selected days of the week
+submitButton.addEventListener('click', () => {
+  const excludedDays = [];
+  const dayCheckboxes = document.getElementsByName('day');
+
+  for (let i = 0; i < dayCheckboxes.length; i++) {
+    if (dayCheckboxes[i].checked) {
+      excludedDays.push(dayCheckboxes[i].value);
+    }
+  }
+
+  for (let i = 0; i < nameItems.length; i++) {
+    const name = nameItems[i].textContent.toLowerCase();
+
+    if (excludedDays.includes(getDayOfWeek())) {
+      nameItems[i].classList.add('excluded');
+    } else {
+      nameItems[i].classList.remove('excluded');
+    }
+ 
