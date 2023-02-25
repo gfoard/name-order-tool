@@ -1,0 +1,14 @@
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 10px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: #ddd;
+}
